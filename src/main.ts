@@ -45,7 +45,7 @@ async function bootstrap() {
   app.use(
     session({
       store: new PgSession({
-        conString: configService.get<string>('DB_CONNECTION_STRING'),
+        conString: configService.get<string>('DATABASE_URL'),
       }),
       secret: process.env.SESSION_SECRET as string,
       resave: false,
