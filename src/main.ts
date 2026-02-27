@@ -41,11 +41,12 @@ async function bootstrap() {
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
     credentials: true,
   });
-// 12 4 4 35 2  57   4 15   700г  100 40 60 80 40 20   150 150 50 10
+// 
   app.use(
     session({
       store: new PgSession({
         conString: configService.get<string>('DATABASE_URL'),
+        createTableIfMissing: true,
       }),
       secret: process.env.SESSION_SECRET as string,
       resave: false,
