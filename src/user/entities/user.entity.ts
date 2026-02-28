@@ -59,6 +59,9 @@ export class User {
   })
   role: Roles;
 
+  @Column()
+  bonus: number;
+
   @Column({ default: false })
   verified_email: boolean;
 
