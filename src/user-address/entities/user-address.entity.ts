@@ -14,8 +14,20 @@ export class UserAddress {
   id: number;
 
   @Column()
-  address: string;
+  address1: string;
 
+  @Column()
+  address2: string;
+
+  @Column()
+  city: string;
+
+  @Column()
+  zip_code: string;
+
+  @Column()
+  country: string;
+    
   @ManyToOne(() => User, (user) => user.address_list, { onDelete: 'CASCADE' })
   user: User;
 
