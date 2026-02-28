@@ -37,7 +37,7 @@ async function bootstrap() {
 
   const PgSession = pgSession(session);
   app.enableCors({
-    origin: ['http://localhost:3000', configService.get<string>('BASE_API')],
+    origin: ['http://localhost:3000', process.env.BASE_API],
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
     credentials: true,
   });
@@ -45,10 +45,10 @@ async function bootstrap() {
   app.use(
     session({
       store: new PgSession({
-        conString: configService.get<string>('DATABASE_URL'),
+        conString: process.env.DATABASE_URL,
         createTableIfMissing: true,
       }),
-      secret: configService.get<string>('SESSION_SECRET') as string,
+      secret: process.env.SESSION_SECRET as string,
       resave: false,
       saveUninitialized: true,
       cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 },
