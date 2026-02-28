@@ -92,7 +92,7 @@ export class UserService {
     const isUserExist = await this.userRepo.find({
       where: { email: dto.email },
     });
-
+console.log('isUserExist:', isUserExist);
     if (isUserExist) throw new BadRequestException('user is ALREADY_EXIST');
 
     const newUser = this.userRepo.create(dto);

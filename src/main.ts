@@ -37,7 +37,7 @@ async function bootstrap() {
 
   const PgSession = pgSession(session);
   app.enableCors({
-    origin: true,
+    origin: ['http://localhost:3000', process.env.BASE_API],
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS',
     credentials: true,
   });
